@@ -6,7 +6,8 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const team = [];
-const render = require("../lib");
+const render = require("../src/page-template");
+const OUTPUT_DIR = process.cwd()
 // const html = render(team);
 
 // Function to add a Manager
@@ -146,7 +147,7 @@ async function addManager() {
     if (!fs.existsSync(OUTPUT_DIR)) {
       fs.mkdirSync(OUTPUT_DIR);
     }
-    fs.writeFileSync(outputPath, html);
+    fs.writeFileSync(path.join(OUTPUT_DIR,"index.html"),html);
     console.log("Team HTML file generated successfully!");
   }
   
